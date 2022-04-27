@@ -16,13 +16,9 @@ if [ ! -d $HOME/massa/ ]; then
 	git clone https://github.com/massalabs/massa
 	cd $HOME/massa && git checkout TEST.9.2
 
-cd massa/massa-node/
-screen -S massa_node
+cd $HOME/massa/massa-node/
 
 cargo build --release
-
-
-RUST_BACKTRACE=full cargo run --release |& tee logs.txt
 
 sudo systemctl restart systemd-journald
 sudo systemctl enable massa
